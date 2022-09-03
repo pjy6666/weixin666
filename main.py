@@ -109,6 +109,7 @@ def get_pi():
     conn.request('POST','/caihongpi/index',params,headers)
     res = conn.getresponse()
     data = res.read()
+    data = json.loads(data)
     caihong_pi = data.json()["content"]
     return caihong_pi
  
