@@ -235,7 +235,7 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
-    caihong_pi = config["caihong"]
+    caihong_pi = config["caihong_pi"]
     caihong_pi = get_pi()
     if note_ch == "" and note_en == "":
         # 获取词霸每日金句
