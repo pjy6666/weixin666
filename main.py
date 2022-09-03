@@ -100,6 +100,16 @@ def get_birthday(birthday, year, today):
         birth_date = year_date
         birth_day = str(birth_date.__sub__(today)).split(" ")[0]
     return birth_day
+   
+def get_pi():
+    conn = http.client.HTTPSConnection('api.tianapi.com')  #接口域名
+    params = urllib.parse.urlencode({'key':'cb3f48767aff2d4da265284d3e9473b9'})
+    headers = {'Content-type':'application/x-www-form-urlencoded'}
+    conn.request('POST','/caihongpi/index',params,headers)
+    res = conn.getresponse()
+    data = res.read()
+    caihong_pi = data.json()["content"]
+    return caihong_pi
  
  
 def get_ciba():
@@ -224,6 +234,8 @@ if __name__ == "__main__":
     weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
+    caihong_pi = config["caihong"]
+    caihong_pi = get_pi()
     if note_ch == "" and note_en == "":
         # 获取词霸每日金句
         note_ch, note_en = get_ciba()
